@@ -1,0 +1,33 @@
+[include]
+	path = ~/.gitconfig.local
+
+[push]
+	default = simple
+
+[core]
+	excludesfile = ~/.gitignore
+	pager = less -x2
+	editor = vi
+
+[diff]
+	algorithm = minimal
+
+[alias]
+	aa = add --all
+	alias = config --get-regexp alias
+	br = branch
+	branch-name = rev-parse --abbrev-ref HEAD
+	brr = branch --remotes
+	ci = commit
+	cia = commit --all
+	co = checkout
+	hist = log --pretty=format:'%Cred%<(8)%h%Creset %<(64,trunc)%s %Cgreen%<(14,trunc)%an%Creset %Cblue%<(10,trunc)%ad%Creset'
+	new = checkout -b 
+	pl = ! git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch --delete
+	pr = remote prune origin
+	publish = ! git push --set-upstream origin "$(git branch-name)"
+	pull-force = ! git fetch --all && git reset --hard "origin/$(git branch-name)"
+	st = status
+
+[log]
+	date = relative
