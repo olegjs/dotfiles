@@ -22,8 +22,10 @@
 	ci = commit
 	cia = commit --all
 	co = checkout
+	cohb = ! git checkout "$(git head-branch)"
 	head-branch = ! git remote show origin | grep 'HEAD branch: ' | awk '{print $3}'
 	hist = log --pretty=format:'%Cred%<(8)%h%Creset %<(64,trunc)%s %Cgreen%<(14,trunc)%an%Creset %Cblue%<(10,trunc)%ad%Creset'
+	last-commit-hash = rev-parse --short HEAD
 	new = checkout -b
 	pl = ! git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch --delete
 	pr = remote prune origin
