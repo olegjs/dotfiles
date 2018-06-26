@@ -22,16 +22,23 @@
 	ci = commit
 	cia = commit --all
 	co = checkout
-	cohb = ! git checkout "$(git head-branch)"
+	co-hb = ! git checkout "$(git head-branch)"
+	co-prev = checkout @{-1}
 	head-branch = ! git remote show origin | grep 'HEAD branch: ' | awk '{print $3}'
-	hist = log --pretty=format:'%Cred%<(8)%h%Creset %<(64,trunc)%s %Cgreen%<(14,trunc)%an%Creset %Cblue%<(10,trunc)%ad%Creset'
+	hist = ! git history --max-count 10 && echo ...
+	history = log --pretty=format:'%Cred%<(8)%h%Creset %<(64,trunc)%s %Cgreen%<(14,trunc)%an%Creset %Cblue%<(10,trunc)%ad%Creset'
 	last-commit-hash = rev-parse --short HEAD
 	new = checkout -b
 	pl = ! git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch --delete
 	pr = remote prune origin
 	publish = ! git push --set-upstream origin "$(git branch-name)"
 	pull-force = ! git fetch --all && git reset --hard "origin/$(git branch-name)"
+	rebase-head-branch = ! git rebase "$(git head-branch)"
 	st = status
 
 [log]
 	date = relative
+	
+[rerere]
+	enabled = true
+	autoupdate = true
