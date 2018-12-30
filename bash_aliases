@@ -1,5 +1,5 @@
 alias ls='ls --color --group-directories-first'
-alias ll='ls -l --human-readable --classify --no-group'
+alias ll='ls -l --human-readable --classify'
 alias la='ll --almost-all'
 
 alias vi='vim'
