@@ -4,11 +4,15 @@ alias la='ll --almost-all'
 
 alias vi='vim'
 
-if [ -n "$(type -P xclip)" ]
-then
+function mk_clip_alias {
+  echo "if [ -p /dev/stdin ]; then $1; fi; $2"
+}
+
+if [ -n "$(type -P xclip)" ]; then
   alias xclip='xclip -selection clipboard'
-  alias clipboard='if [ -p /dev/stdin ]; then xclip -in; fi; xclip -out'
-elif [ -n "$(type -P pbcopy)" ] && [ -n "$(type -P pbpaste)" ]
-then
-  alias clipboard='if [ -p /dev/stdin ]; then pbcopy; fi; pbpaste'
+  alias clipboard="$(mk_clip_alias 'xclip -in' 'xclip -out')"
+elif [ -n "$(type -P pbcopy)" ] && [ -n "$(type -P pbpaste)" ]; then
+  alias clipboard="$(mk_clip_alias pbcopy pbpaste)"
 fi
+
+unset mk_clip_alias
