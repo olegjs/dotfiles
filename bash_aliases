@@ -1,4 +1,4 @@
-alias ls='ls --color --group-directories-first'
+alias ls='ls --color --group-directories-first --indicator-style=slash'
 alias ll='ls -l --human-readable --classify'
 alias la='ll --almost-all'
 
