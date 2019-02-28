@@ -7,7 +7,7 @@
 [core]
 	excludesfile = ~/.gitignore
 	pager = less -x2
-	editor = vim
+	editor = vim -c startinsert
 
 [diff]
 	algorithm = minimal
