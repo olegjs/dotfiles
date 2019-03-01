@@ -1,4 +1,7 @@
-alias ls='ls --color --group-directories-first --indicator-style=slash'
+LS='ls'
+[ -n "$(type -P gls)" ] && LS='gls'
+
+alias ls="$LS --color --group-directories-first --indicator-style=slash"
 alias ll='ls -l --human-readable --classify'
 alias la='ll --almost-all'
 

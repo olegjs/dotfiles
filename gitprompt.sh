@@ -1,5 +1,4 @@
-# Find git-prompt.sh
-# ln -s git-prompt.sh /etc/bash_completion.d/git-prompt
+# Find git-prompt.sh and "source" it
 
 if [ "$(type -t __git_ps1)" == 'function' ]
 then
