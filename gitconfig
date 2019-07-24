@@ -24,6 +24,7 @@
 	co = checkout
 	co-hb = ! git checkout "$(git head-branch)"
 	co-prev = checkout @{-1}
+	fix-and-rebase = "! sh -c \"git commit --fixup $1 && git rebase --interactive --autosquash $1~\""
 	head-branch = ! git remote show origin | grep 'HEAD branch: ' | awk '{print $3}'
 	hist = ! git history --max-count 25 && echo ...
 	history = log --pretty=format:'%Cred%<(8)%h%Creset %<(64,trunc)%s %Cgreen%<(14,trunc)%an%Creset %Cblue%<(10,trunc)%ad%Creset'
